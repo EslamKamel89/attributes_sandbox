@@ -1,10 +1,14 @@
-<?php 
+<?php
 
 use App\DTO\UserRegistration;
+use App\Validation\Validator;
 
 require_once 'vendor/autoload.php';
 
-$dto =new  UserRegistration(
-    'Eslam' , 'admin@gmail.com'
+$dto = new UserRegistration(
+	'', 'not an email'
 );
-dd($dto);
+$validator = new Validator();
+$validator->validate( $dto );
+$errors = $validator->getErrors();
+dd( $errors );
